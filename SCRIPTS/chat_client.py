@@ -115,13 +115,13 @@ ip_msg = tkinter.StringVar()
 port_msg = tkinter.StringVar()
 usr_msg = tkinter.StringVar()
 
-ip_entry = tkinter.Entry(master=start_frame, textvariable=ip_msg)
-port_entry = tkinter.Entry(master=start_frame, textvariable=port_msg)
-usr_entry = tkinter.Entry(master=start_frame, textvariable=usr_msg)
+ip_entry = tkinter.Entry(start_frame, textvariable=ip_msg)
+port_entry = tkinter.Entry(start_frame, textvariable=port_msg)
+usr_entry = tkinter.Entry(start_frame, textvariable=usr_msg)
 
-ip_label = tkinter.Label(master=start_frame, text="IP ADDRESS")
-port_label = tkinter.Label(master=start_frame, text="PORT NUMBER")
-usr_label = tkinter.Label(master=start_frame, text="USERNAME")
+ip_label = tkinter.Label(start_frame, text="IP ADDRESS")
+port_label = tkinter.Label(start_frame, text="PORT NUMBER")
+usr_label = tkinter.Label(start_frame, text="USERNAME")
 
 ip_label.grid(row=0, column=0)
 port_label.grid(row=1, column=0)
@@ -131,24 +131,30 @@ ip_entry.grid(row=0, column=1)
 port_entry.grid(row=1, column=1)
 usr_entry.grid(row=2, column=1)
 
-connect_button = tkinter.Button(master=start_frame, text="Connect", command=connect)
+connect_button = tkinter.Button(start_frame, text="Connect", command=connect)
 
 connect_button.grid(row=2, column=2)
 
 ####CHAT####
 
 chat_frame.grid(row=0, column=0)
+chat_frame.grid_rowconfigure(0, weight=1)
+chat_frame.grid_columnconfigure(0, weight=1)
+chat_frame.grid_rowconfigure(1, weight=1)
+chat_frame.grid_columnconfigure(1, weight=1)
+
 #chat_frame.place(relx=0.5, rely=0.5, anchor="center")
 
 scrollbar = tkinter.Scrollbar(master=chat_frame)
-messages = tkinter.Listbox(master=chat_frame, height=30, width=100, font=("Helvetica", 15), yscrollcommand=scrollbar.set)
-scrollbar.grid(row=0, column=1, sticky="nse")
-messages.grid(row=0, column=0)
+messages = tkinter.Listbox(chat_frame, height=20, width=30, font=("Helvetica", 14), yscrollcommand=scrollbar.set)
+scrollbar.config(command=messages.yview)
+scrollbar.grid(row=0, column=1, sticky=tkinter.N+tkinter.S)
+messages.grid(row=0, column=0, sticky=tkinter.E+tkinter.N+tkinter.S+tkinter.W)
 messages.grid_remove()
 
 msg = tkinter.StringVar()
 message_box = tkinter.Entry(master=chat_frame, textvariable=msg)
-message_box.grid(row=1, column=0, sticky="swe")
+message_box.grid(row=1, column=0, sticky=tkinter.E+tkinter.S+tkinter.W)
 message_box.bind("<Return>", lambda event: send(msg))
 
 
