@@ -42,7 +42,11 @@ def connect(event=None):
 
     receive_thread.start()
     raise_frame(chat_frame)
+    
     messages.grid()
+    scrollbar.grid()
+    scrollbarx.grid()
+    message_box.grid()
 
 
 
@@ -146,19 +150,28 @@ chat_frame.grid_columnconfigure(1, weight=1)
 #chat_frame.place(relx=0.5, rely=0.5, anchor="center")
 
 scrollbar = tkinter.Scrollbar(master=chat_frame)
-messages = tkinter.Listbox(chat_frame, height=20, width=30, font=("Helvetica", 14), yscrollcommand=scrollbar.set)
+scrollbarx = tkinter.Scrollbar(master=chat_frame, orient=tkinter.HORIZONTAL)
+
+messages = tkinter.Listbox(chat_frame, height=20, width=50, font=("Helvetica", 14), yscrollcommand=scrollbar.set, xscrollcommand=scrollbarx.set)
 scrollbar.config(command=messages.yview)
 scrollbar.grid(row=0, column=1, sticky=tkinter.N+tkinter.S)
+
+scrollbarx.grid(row=1, column=0, sticky=tkinter.W+tkinter.E)
+scrollbarx.config(command=messages.xview)
+
+
 messages.grid(row=0, column=0, sticky=tkinter.E+tkinter.N+tkinter.S+tkinter.W)
-messages.grid_remove()
+
 
 msg = tkinter.StringVar()
 message_box = tkinter.Entry(master=chat_frame, textvariable=msg)
-message_box.grid(row=1, column=0, sticky=tkinter.E+tkinter.S+tkinter.W)
+message_box.grid(row=2, column=0, sticky=tkinter.E+tkinter.S+tkinter.W)
 message_box.bind("<Return>", lambda event: send(msg))
 
-
-
+messages.grid_remove()
+scrollbar.grid_remove()
+scrollbarx.grid_remove()
+message_box.grid_remove()
 
 #########################################Networking side'
 
