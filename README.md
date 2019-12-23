@@ -6,4 +6,4 @@ Just run the script in terminal otherwise and enter an IP, PORT, and Username. P
 The chat_server.py is the server side of the app, and chat_client.py the client side.
 Uses tkinter as GUI.
 There will be a writable spot at the lower part of the window, to send text press 'Enter' or 'Return'.
-The lsitbox will automatically move down when the texts exceed the vertical space.
+The listbox will automatically move down when the texts exceed the vertical space.
