@@ -1,0 +1,3 @@
+([('chat_client',
+   '/Users/ludwigjonsson/Desktop/chat/Ludde_chat/dist/chat_client',
+   'EXECUTABLE')],)
