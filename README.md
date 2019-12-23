@@ -1,4 +1,4 @@
-A simple chat room app that uses built-in sockets in Unix and Python to communicate with a server, like a Ununtu home server or localhost.
+A simple chat room app that uses built-in sockets in Unix and Python to communicate with a server over TCP, like a Ununtu home server or localhost.
 
 In the 'MAC' and 'WINDOWS' folders I will in a future update include executables. They will be located in the /dir/ folder.
 
