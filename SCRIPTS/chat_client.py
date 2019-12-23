@@ -61,6 +61,7 @@ def send(my_msg):
         client_socket.send(message_header + ready_message)
 
         messages.insert(tkinter.END, new_message)
+        messages.see(tkinter.END)
         msg.set("")
 
 
@@ -91,6 +92,7 @@ def receive():
             complete_msg = f"{usrname} >> {msg}"
 
             messages.insert(tkinter.END, complete_msg)
+            messages.see(tkinter.END)
         except:
             break
 
