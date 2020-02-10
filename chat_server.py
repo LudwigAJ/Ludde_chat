@@ -4,8 +4,8 @@ import socket
 
 # We include a header here which we send the size of the incoming message in.
 HEADER = 10
-IP_ADDRESS = "192.168.1.15"
-PORT_ADDRESS = 6344
+IP_ADDRESS = ""
+PORT_ADDRESS = INT
 
 #Setup the server socket and add some options that lets it reconnect to client etc.
 sock_server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
